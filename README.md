@@ -58,7 +58,7 @@ dijalankan di latar belakang memakai `SwingWorker` agar UI tidak membeku.
 1. Clone repositori:
 
    ```bash
-   git clone <URL_REPOSITORI>
+   git clone https://github.com/katapirmaniniaja/SIMANTAP.git
    cd SIMANTAP
    ```
 

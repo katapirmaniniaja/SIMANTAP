@@ -23,8 +23,10 @@ dan hasil demo singkat. Jangan menulis klaim yang belum benar-benar berjalan.
 - [x] Constraint `CHECK` diuji: kombinasi kolom tidak valid ditolak
 - [x] README kerangka lima bagian dibuat
 - [x] `pom.xml` dengan Java 17, Connector/J, dan JUnit 5 dibuat
-- [ ] Remote GitHub ditambahkan dan commit pertama di-push
+- [x] Remote GitHub ditambahkan dan commit pertama di-push
 - [ ] Tautan repositori dicatat di spreadsheet/e-learning
+
+**Repositori:** https://github.com/katapirmaniniaja/SIMANTAP
 
 ### Bukti Teknis
 
