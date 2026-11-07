@@ -50,7 +50,7 @@ dan hasil demo singkat. Jangan menulis klaim yang belum benar-benar berjalan.
 
 | Hash | Pesan | Isi |
 |---|---|---|
-| _diisi_ | `chore: init proyek SIMANTAP` | struktur, SQL, README, class diagram |
+| `b680fda` | `chore: inisialisasi proyek SIMANTAP minggu 10` | struktur, SQL, README, class diagram, pom, roadmap |
 
 ---
 
