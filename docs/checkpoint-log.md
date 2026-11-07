@@ -35,6 +35,8 @@ dan hasil demo singkat. Jangan menulis klaim yang belum benar-benar berjalan.
 | View | `v_rekap_mingguan` |
 | Data contoh | 3 kategori, 4 tugas |
 | Uji constraint | `INSERT` tugas berbatas waktu tanpa deadline ditolak (`ERROR 3819`) |
+| Uji transaksi | Insert riwayat + update status + update poin berhasil, lalu `ROLLBACK` mengembalikan ketiganya ke kondisi awal |
+| Build | Maven 3.9.11, `mvn -DskipTests package` berhasil (JAR masih placeholder sampai kode Java dibuat) |
 | Versi MySQL | 8.4.3 |
 
 ### Catatan
