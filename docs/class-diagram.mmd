@@ -1,0 +1,153 @@
+﻿classDiagram
+    direction LR
+
+    class Tugas {
+        <<abstract>>
+        -int idTugas
+        -String judul
+        -String deskripsi
+        -KategoriProduktivitas kategori
+        -Prioritas prioritas
+        -StatusTugas status
+        -int streak
+        +hitungPoinDasar() int
+        +hitungPoin(PoinStrategy strategy) int
+        +getJenisTugas() String
+        +tambahStreak() void
+        +resetStreak() void
+    }
+
+    class TugasBerbatasWaktu {
+        -LocalDateTime deadline
+        -int estimasiMenit
+        +hitungPoinDasar() int
+        +getDeadline() LocalDateTime
+        +sisaWaktu() Duration
+        +isKedaluwarsa() boolean
+    }
+
+    class RutinitasHarian {
+        -int durasiMenit
+        -int targetPerHari
+        +hitungPoinDasar() int
+        +getJenisTugas() String
+        +catatPenyelesaian() void
+    }
+
+    class KategoriProduktivitas {
+        -int idKategori
+        -String namaKategori
+        -String deskripsi
+        -int totalPoin
+        -List~Tugas~ daftarTugas
+        +tambahPoin(int poin) void
+        +hitungTotalPoin(PoinStrategy strategy) int
+    }
+
+    class RiwayatPenyelesaian {
+        -long idRiwayat
+        -Tugas tugas
+        -LocalDateTime waktuSelesai
+        -LocalDateTime batasWaktu
+        -StatusKetepatan statusKetepatan
+        -int poinDasar
+        -int poinBonus
+        -String catatan
+        +getTotalPoin() int
+        +getDeadline() LocalDateTime
+        +sisaWaktu() Duration
+        +isKedaluwarsa() boolean
+    }
+
+    class BatasWaktu {
+        <<interface>>
+        +getDeadline() LocalDateTime
+        +sisaWaktu() Duration
+        +isKedaluwarsa() boolean
+    }
+
+    class PoinStrategy {
+        <<interface>>
+        +hitungBonus(Tugas tugas) int
+        +getNama() String
+    }
+
+    class TanpaBonusStrategy {
+        +hitungBonus(Tugas tugas) int
+        +getNama() String
+    }
+
+    class BonusStreakStrategy {
+        -int poinPerStreak
+        -int batasBonus
+        +hitungBonus(Tugas tugas) int
+        +getNama() String
+    }
+
+    class ModeKebutSemalamStrategy {
+        -int bonusTetap
+        +hitungBonus(Tugas tugas) int
+        +getNama() String
+    }
+
+    class SimantapException {
+        <<abstract>>
+        -String pesanPengguna
+        +getPesanPengguna() String
+    }
+
+    class TugasKedaluwarsaException {
+        -LocalDateTime deadline
+        -LocalDateTime waktuSelesai
+    }
+
+    class ValidasiTugasException {
+        -String namaField
+    }
+
+    class DataTidakDitemukanException {
+        -String namaEntitas
+        -Object id
+    }
+
+    class Prioritas {
+        <<enumeration>>
+        RENDAH
+        SEDANG
+        TINGGI
+    }
+
+    class StatusTugas {
+        <<enumeration>>
+        BELUM_SELESAI
+        SELESAI
+    }
+
+    class StatusKetepatan {
+        <<enumeration>>
+        TEPAT_WAKTU
+        TERLAMBAT
+        TANPA_DEADLINE
+    }
+
+    Tugas <|-- TugasBerbatasWaktu
+    Tugas <|-- RutinitasHarian
+
+    BatasWaktu <|.. TugasBerbatasWaktu
+    BatasWaktu <|.. RiwayatPenyelesaian
+
+    KategoriProduktivitas "1" o-- "0..*" Tugas : mengelompokkan
+    Tugas "1" --> "0..*" RiwayatPenyelesaian : dicatat dalam
+    Tugas ..> PoinStrategy : memakai
+
+    PoinStrategy <|.. TanpaBonusStrategy
+    PoinStrategy <|.. BonusStreakStrategy
+    PoinStrategy <|.. ModeKebutSemalamStrategy
+
+    SimantapException <|-- TugasKedaluwarsaException
+    SimantapException <|-- ValidasiTugasException
+    SimantapException <|-- DataTidakDitemukanException
+
+    Tugas --> Prioritas
+    Tugas --> StatusTugas
+    RiwayatPenyelesaian --> StatusKetepatan

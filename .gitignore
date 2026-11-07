@@ -1,0 +1,33 @@
+# Build output
+target/
+build/
+out/
+bin/
+*.class
+*.jar
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.settings/
+.project
+.classpath
+
+# Rahasia lokal
+db.properties
+*.env
+
+# Log dan hasil ekspor
+*.log
+exports/
+*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jangan abaikan file contoh
+!db.properties.example

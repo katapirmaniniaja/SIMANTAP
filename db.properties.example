@@ -1,0 +1,6 @@
+# Salin file ini menjadi db.properties dan sesuaikan dengan Laragon.
+# File db.properties TIDAK boleh di-commit.
+
+db.url=jdbc:mysql://localhost:3306/simantap?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Jakarta
+db.user=root
+db.password=
